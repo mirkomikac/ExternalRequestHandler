@@ -33,6 +33,6 @@ public class PolisaController {
 		// Tu ide kod za validaciji (provera autenticnosti)
 		
 		//Slanje polisa ka DataAccessService
-		return template.postForObject(databaseUri.getDatabaseUri() + "/polise", polisa, Polisa.class);
+		return template.postForObject(databaseUri.getDatabaseUri() + "/polise/1", polisa, Polisa.class);
 	}
 }
