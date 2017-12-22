@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.sep.tim2.erh.config.DatabaseUri;
 import com.sep.tim2.erh.model.Polisa;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.sep.tim2.erh.controller;
+package com.sep.tim2.erh.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

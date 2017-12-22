@@ -2,7 +2,7 @@ package com.sep.tim2.erh.rest.client;
 
 import org.springframework.web.client.RestTemplate;
 
-import com.sep.tim2.erh.controller.DatabaseUri;
+import com.sep.tim2.erh.config.DatabaseUri;
 import com.sep.tim2.erh.model.OsiguravajucaKuca;
 
 public class OsiguravajucaKucaClient {
