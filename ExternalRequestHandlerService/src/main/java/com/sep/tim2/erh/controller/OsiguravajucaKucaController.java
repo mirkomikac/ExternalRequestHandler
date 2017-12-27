@@ -12,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.sep.tim2.erh.config.DatabaseUri;
 import com.sep.tim2.erh.model.OsiguravajucaKuca;
-import com.sep.tim2.erh.rest.client.OsiguravajucaKucaClient;
 
 @RestController
 @RequestMapping(value="/osiguravajuceKuce")
@@ -29,9 +28,7 @@ public class OsiguravajucaKucaController {
 	
 	@GetMapping("/{osiguravajucaKucaId}")
 	public OsiguravajucaKuca vratiOsiguravajucuKucu(@PathVariable("osiguravajucaKucaId")Long osiguravajucaKucaId){
-		OsiguravajucaKucaClient okc = new OsiguravajucaKucaClient();
-		OsiguravajucaKuca ok = okc.sendOsiguravajucaKuca(databaseUri, osiguravajucaKucaId);
-		return ok;
+		return restTemplate.getForObject(databaseUri.getDatabaseUri() + "/osiguravajuceKuce/"+osiguravajucaKucaId, OsiguravajucaKuca.class);
 	}
 	
 	@SuppressWarnings("unchecked")
