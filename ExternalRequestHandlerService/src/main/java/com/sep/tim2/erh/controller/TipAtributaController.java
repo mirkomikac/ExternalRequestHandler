@@ -27,9 +27,17 @@ public class TipAtributaController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@GetMapping("zaTipOsiguranja/{tipOsiguranjaId}")
+	@GetMapping("/zaTipOsiguranja/{tipOsiguranjaId}")
 	@ResponseBody
-	public List<TipAtributa> getTipoviAtributa(@PathVariable("tipOsiguranjaId")Long tipOsiguranjaId) {
+	public List<TipAtributa> getTipoviAtributaZaTipOsiguranja(@PathVariable("tipOsiguranjaId")Long tipOsiguranjaId) {
 		return restTemplate.getForObject(databaseUri.getDatabaseUri() + "/tipoviAtributa/zaTipOsiguranja/" + tipOsiguranjaId, List.class);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping("/zaKontekst/{kontekstAtributaId}")
+	@ResponseBody
+	public List<TipAtributa> getTipoviAtributaZaKontekstAtributa(@PathVariable("kontekstAtributaId")Long kontekstAtributaId) {
+		return restTemplate.getForObject(databaseUri.getDatabaseUri() + "/tipoviAtributa/zaKontekst/" + kontekstAtributaId, List.class);
+	}
+	
 }
