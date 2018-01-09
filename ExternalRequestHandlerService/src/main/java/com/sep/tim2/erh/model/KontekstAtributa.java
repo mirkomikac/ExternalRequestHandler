@@ -1,7 +1,6 @@
 package com.sep.tim2.erh.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class KontekstAtributa implements Serializable{
@@ -13,6 +12,7 @@ public class KontekstAtributa implements Serializable{
 	private short redniBrojForme;
 	private Boolean predstavljaGrupu;
 	private List<TipAtributa> tipoviAtributa;
+	private List<KontrolniAtribut> kontrolniAtributi;
 	private List<TipOsiguranja> tipoviOsiguranja;
 	
 	public KontekstAtributa() {
@@ -59,9 +59,6 @@ public class KontekstAtributa implements Serializable{
 	}
 
 	public List<TipAtributa> getTipoviAtributa() {
-		if(tipoviAtributa == null) {
-			tipoviAtributa = new ArrayList<>();
-		}
 		return tipoviAtributa;
 	}
 
@@ -69,10 +66,15 @@ public class KontekstAtributa implements Serializable{
 		this.tipoviAtributa = tipoviAtributa;
 	}
 
+	public List<KontrolniAtribut> getKontrolniAtributi() {
+		return kontrolniAtributi;
+	}
+
+	public void setKontrolniAtributi(List<KontrolniAtribut> kontrolniAtributi) {
+		this.kontrolniAtributi = kontrolniAtributi;
+	}
+
 	public List<TipOsiguranja> getTipoviOsiguranja() {
-		if(tipoviOsiguranja == null) {
-			return new ArrayList<>();
-		}
 		return tipoviOsiguranja;
 	}
 
