@@ -12,6 +12,7 @@ public class VrednostAtributaOsiguranja implements Serializable{
 	@NotNull
 	@Size(max = 50)
 	private String vrednost;
+	private Short grupacioniBroj;
 	private TipAtributa tipAtributa;
 	private Osiguranje osiguranje;
 	
@@ -32,6 +33,14 @@ public class VrednostAtributaOsiguranja implements Serializable{
 
 	public void setVrednost(String vrednost) {
 		this.vrednost = vrednost;
+	}
+
+	public Short getGrupacioniBroj() {
+		return grupacioniBroj;
+	}
+
+	public void setGrupacioniBroj(Short grupacioniBroj) {
+		this.grupacioniBroj = grupacioniBroj;
 	}
 
 	public TipAtributa getTipAtributa() {

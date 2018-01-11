@@ -17,6 +17,9 @@ public class TipAtributa implements Serializable{
 	private Boolean obavezan;
 	private Boolean uticeNaCenu;
 	private Boolean slobodnoPolje;
+	private String regex;
+	private Integer minimalnaDuzina;
+	private Integer maksimalnaDuzina;
 	private KontekstAtributa kontekst;
 	private List<KontrolniAtribut> kontrolniAtributi;
 	private List<PredefinisanaVrednost> predefinisaneVrednosti;
@@ -72,6 +75,30 @@ public class TipAtributa implements Serializable{
 
 	public void setSlobodnoPolje(Boolean slobodnoPolje) {
 		this.slobodnoPolje = slobodnoPolje;
+	}
+
+	public String getRegex() {
+		return regex;
+	}
+
+	public void setRegex(String regex) {
+		this.regex = regex;
+	}
+
+	public Integer getMinimalnaDuzina() {
+		return minimalnaDuzina;
+	}
+
+	public void setMinimalnaDuzina(Integer minimalnaDuzina) {
+		this.minimalnaDuzina = minimalnaDuzina;
+	}
+
+	public Integer getMaksimalnaDuzina() {
+		return maksimalnaDuzina;
+	}
+
+	public void setMaksimalnaDuzina(Integer maksimalnaDuzina) {
+		this.maksimalnaDuzina = maksimalnaDuzina;
 	}
 
 	public KontekstAtributa getKontekst() {
