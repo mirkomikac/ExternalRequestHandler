@@ -3,10 +3,15 @@ package com.sep.tim2.erh.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class KontekstAtributa implements Serializable{
 
 	private static final long serialVersionUID = 2169394029110006240L;
 	private Long id;
+	@NotNull
+	@Size(max=50)
 	private String naziv;
 	private Boolean visestrukoDodavanje;
 	private short redniBrojForme;

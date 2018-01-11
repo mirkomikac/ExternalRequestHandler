@@ -5,12 +5,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class Polisa implements Serializable{
 
 	private static final long serialVersionUID = -6901258118812785721L;
 
 	private Long id;
 	private Date datumSklapanja;
+	@NotNull
+	@Min(0)
 	private Double cena;
 	private List<Osiguranje> osiguranja;
 	private Klijent klijent;

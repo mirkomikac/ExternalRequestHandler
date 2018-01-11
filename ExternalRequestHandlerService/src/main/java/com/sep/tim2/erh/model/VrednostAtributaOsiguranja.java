@@ -2,10 +2,15 @@ package com.sep.tim2.erh.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class VrednostAtributaOsiguranja implements Serializable{
 
 	private static final long serialVersionUID = -7767383711555084420L;
 	private Long id;
+	@NotNull
+	@Size(max = 50)
 	private String vrednost;
 	private TipAtributa tipAtributa;
 	private Osiguranje osiguranje;

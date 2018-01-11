@@ -3,10 +3,15 @@ package com.sep.tim2.erh.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class TipAtributa implements Serializable{
 
 	private static final long serialVersionUID = 5218576756408205556L;
 	private Long id;
+	@NotNull
+	@Size(max = 50)
 	private String naziv;
 	private DomenAtributa domen;
 	private Boolean obavezan;

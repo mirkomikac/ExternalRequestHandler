@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class Klijent implements Serializable{
 	
 	private static final long serialVersionUID = 23507162692089508L;
@@ -11,12 +15,31 @@ public class Klijent implements Serializable{
 	public Klijent() {}
 	
 	private Long id;
+	@NotNull
+	@Size(max = 30)
+	@Pattern(regexp = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")
 	private String ime;
+	@NotNull
+	@Size(max = 30)
+	@Pattern(regexp = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")
 	private String prezime;
+	@NotNull
+	@Pattern(regexp = "\\d+")
+	@Size(min=13, max=13)
 	private String jmbg;
+	@NotNull
 	private String brojPasosa;
+	@NotNull
+	@Size(max = 40)
+	@Pattern(regexp = "^[a-zA-Z]+[a-zA-Z ]+[\\d]+$")
 	private String adresa;
+	@NotNull
+	@Size(max = 20)
+	@Pattern(regexp = "\\d+")
 	private String brojTelefona;
+	@NotNull
+	@Size(max = 50)
+	@Pattern(regexp = "^[a-zA-Z\\d]+[@ ][a-z\\d]+\\.[a-z]+$")
 	private String email;
 	private List<Polisa> polise;
 	public Long getId() {

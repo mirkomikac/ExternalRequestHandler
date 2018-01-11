@@ -4,15 +4,34 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class OsiguravajucaKuca implements Serializable{
 	
 	private static final long serialVersionUID = -4134784298073252398L;
 
 	private Long id;
+	@NotNull
+	@Size(min = 9, max = 9)
+	@Pattern(regexp = "\\d+")
 	private String pib;
+	@NotNull
+	@Size(max = 40)
+	@Pattern(regexp = "^[a-zA-Z\\d ]+$")
 	private String naziv;
+	@NotNull
+	@Size(max = 40)
+	@Pattern(regexp = "^[a-zA-Z]+[a-zA-Z ]+[\\d]+$")
 	private String adresa;
+	@NotNull
+	@Size(max = 40)
+	@Pattern(regexp = "^[A-Z][a-zA-Z\\d ]+$")
 	private String mesto;
+	@NotNull
+	@Size(max = 20)
+	@Pattern(regexp = "\\d+")
 	private String telefon; 
 	private List<TipOsiguranja> tipoviOsiguranja;
 	private List<Cenovnik> listaCenovnika;

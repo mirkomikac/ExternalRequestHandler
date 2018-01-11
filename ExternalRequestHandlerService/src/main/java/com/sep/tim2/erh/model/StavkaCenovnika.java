@@ -2,10 +2,15 @@ package com.sep.tim2.erh.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class StavkaCenovnika implements Serializable{
 
 	private static final long serialVersionUID = 1530039357410789892L;
 	private Long id;
+	@NotNull
+	@Min(0)
 	private Double suma;
 	private Cenovnik cenovnik;
 	private PredefinisanaVrednost predefinisanaVrednost;
