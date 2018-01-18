@@ -8,6 +8,18 @@ public class DatabaseUri {
 	
 	@Value("${spring.data.database}")
 	private String databaseUri;
+	
+	@Value("${spring.data.paymentHandler}")
+	private String paymentHandlerUri;
+	
+
+	public String getPaymentHandlerUri() {
+		return paymentHandlerUri;
+	}
+
+	public void setPaymentHandlerUri(String paymentHandlerUri) {
+		this.paymentHandlerUri = paymentHandlerUri;
+	}
 
 	public String getDatabaseUri() {
 		return databaseUri;
