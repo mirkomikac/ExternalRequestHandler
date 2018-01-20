@@ -32,16 +32,14 @@ public class OsiguranjeController {
 	
 	@PostMapping("/{tipOsiguranjaId}")
 	@ResponseBody
-	public Osiguranje createOsiguranje(@RequestBody Osiguranje osiguranje, @PathVariable("tipOsiguranjaId")Long tipOsiguranjaId) {
+	public String createOsiguranje(@RequestBody Osiguranje osiguranje, @PathVariable("tipOsiguranjaId")Long tipOsiguranjaId) {
 		//Kreiranje osiguranja
-		restTemplate.postForObject(databaseUri.getDatabaseUri() + "/osiguranja/" + tipOsiguranjaId, osiguranje, Osiguranje.class);
+		osiguranje = restTemplate.postForObject(databaseUri.getDatabaseUri() + "/osiguranja/" + tipOsiguranjaId, osiguranje, Osiguranje.class);
 		//Kreiranje osiguranja za placanje
 		OsiguranjeUplate osiguranjeUplate = osiguranjeService.prepareOsiguranje(osiguranje.getIznos(),osiguranje.getDatumSklapanja(),osiguranje.getId());
-		restTemplate.postForObject(databaseUri.getDatabaseUri() + "/payment/osiguranja/" + tipOsiguranjaId, osiguranje, Osiguranje.class);
+		restTemplate.postForObject(databaseUri.getDatabaseUri() + "/payment/osiguranja", osiguranjeUplate, OsiguranjeUplate.class);
 		//Slanje osiguranja PaymentHandleru za kreiranje uplate
-		restTemplate.postForObject(databaseUri.getPaymentHandlerUri() + "/payment/"/*+cena*/, osiguranjeUplate, OsiguranjeUplate.class);
-		return osiguranje;
-
+		return restTemplate.postForObject(databaseUri.getPaymentHandlerUri() + "/payment", osiguranjeUplate, String.class);
 	}
 	
 }
