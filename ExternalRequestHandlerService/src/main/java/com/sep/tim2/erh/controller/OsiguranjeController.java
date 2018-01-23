@@ -1,5 +1,7 @@
 package com.sep.tim2.erh.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import com.sep.tim2.erh.config.DatabaseUri;
 import com.sep.tim2.erh.model.Osiguranje;
 import com.sep.tim2.erh.model.OsiguranjeUplate;
+import com.sep.tim2.erh.model.VrednostAtributaOsiguranja;
 import com.sep.tim2.erh.service.OsiguranjeService;
 
 @RestController
@@ -33,8 +36,6 @@ public class OsiguranjeController {
 	@PostMapping("/{tipOsiguranjaId}/{tipUplate}")
 	@ResponseBody
 	public String createOsiguranje(@RequestBody Osiguranje osiguranje, @PathVariable("tipOsiguranjaId")Long tipOsiguranjaId, @PathVariable("tipUplate")String tipUplate) {
-		Double cena = restTemplate.postForObject(databaseUri.getPriceManagmentUri()+"/api/jboosdrools/izracunajCenu", osiguranje.getVrednostiAtributaOsiguranja(), Double.class);
-		osiguranje.setIznos(cena);
 		//Kreiranje osiguranja
 		osiguranje = restTemplate.postForObject(databaseUri.getDatabaseUri() + "/osiguranja/" + tipOsiguranjaId, osiguranje, Osiguranje.class);
 		//Kreiranje osiguranja za placanje
@@ -42,6 +43,12 @@ public class OsiguranjeController {
 		restTemplate.postForObject(databaseUri.getDatabaseUri() + "/payment/osiguranja", osiguranjeUplate, OsiguranjeUplate.class);
 		//Slanje osiguranja PaymentHandleru za kreiranje uplate
 		return restTemplate.postForObject(databaseUri.getPaymentHandlerUri() + "/payment/" + tipUplate, osiguranjeUplate, String.class);
+	}
+	
+	@PostMapping()
+	@ResponseBody
+	public Double getCena(@RequestBody List<VrednostAtributaOsiguranja> listaVrednosti) {
+		return restTemplate.postForObject(databaseUri.getPriceManagmentUri()+"/api/jboosdrools/izracunajCenu", listaVrednosti, Double.class);
 	}
 	
 }
