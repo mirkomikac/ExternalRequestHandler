@@ -12,6 +12,17 @@ public class DatabaseUri {
 	@Value("${spring.data.paymentHandler}")
 	private String paymentHandlerUri;
 	
+	@Value("${spring.data.priceManagment}")
+	private String priceManagmentUri;
+	
+
+	public String getPriceManagmentUri() {
+		return priceManagmentUri;
+	}
+
+	public void setPriceManagmentUri(String priceManagmentUri) {
+		this.priceManagmentUri = priceManagmentUri;
+	}
 
 	public String getPaymentHandlerUri() {
 		return paymentHandlerUri;

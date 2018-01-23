@@ -33,6 +33,8 @@ public class OsiguranjeController {
 	@PostMapping("/{tipOsiguranjaId}/{tipUplate}")
 	@ResponseBody
 	public String createOsiguranje(@RequestBody Osiguranje osiguranje, @PathVariable("tipOsiguranjaId")Long tipOsiguranjaId, @PathVariable("tipUplate")String tipUplate) {
+		Double cena = restTemplate.postForObject(databaseUri.getPriceManagmentUri()+"/api/jboosdrools/izracunajCenu", osiguranje.getVrednostiAtributaOsiguranja(), Double.class);
+		osiguranje.setIznos(cena);
 		//Kreiranje osiguranja
 		osiguranje = restTemplate.postForObject(databaseUri.getDatabaseUri() + "/osiguranja/" + tipOsiguranjaId, osiguranje, Osiguranje.class);
 		//Kreiranje osiguranja za placanje
@@ -43,3 +45,4 @@ public class OsiguranjeController {
 	}
 	
 }
+;
