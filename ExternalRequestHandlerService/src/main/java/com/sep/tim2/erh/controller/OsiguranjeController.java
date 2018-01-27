@@ -45,7 +45,7 @@ public class OsiguranjeController {
 		return restTemplate.postForObject(databaseUri.getPaymentHandlerUri() + "/payment/" + tipUplate, osiguranjeUplate, String.class);
 	}
 	
-	@PostMapping()
+	@PostMapping
 	@ResponseBody
 	public Double getCena(@RequestBody List<VrednostAtributaOsiguranja> listaVrednosti) {
 		return restTemplate.postForObject(databaseUri.getPriceManagmentUri()+"/api/jboosdrools/izracunajCenu", listaVrednosti, Double.class);
